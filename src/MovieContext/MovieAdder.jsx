@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import {myContext} from "./Context.jsx";
+import { myContext } from "./Context.jsx";
 
 import styled from 'styled-components';
 
@@ -9,36 +9,62 @@ margin-bottom: 2rem;
 padding: 0 2rem;
 background-color: #FBE7C6;
 `
+const InputWrap = styled.div`
+display: flex;
+flex-direction: column;
+width: 35vw;
+`
+const ButtonSubmit = styled.button `
+margin-right: 2rem;
+background-color: #B6E2D3;
+border: none;
+padding: 0.5rem;
+`
+
+const ButtonClear = styled.button `
+background-color: #EF7C8E;
+border: none;
+padding: 0.5rem;
+`
+const Input = styled.input`
+margin-bottom: 0.5rem;
+padding: 0.5rem;
+`
 
 export default function MovieAdder() {
-    const { movies, changeHandlerMovie, submit } = useContext(myContext)
+    const { movies, movie, changeHandlerMovie, submit, handleClear } = useContext(myContext)
 
     return (
         <div>
-        {movies.map((m) => {
-            return(
-                <>
-                <MovieWrap>
-                <h2>{m.movieName}</h2>
-                <p>{m.moviePrice} Euro</p>
-                </MovieWrap>
-                </>
+            {movies.map((m, index) => {
+                return (
+                    <>
+                        <MovieWrap>
+                            <h2 key={index + 1}>{m.movieName}</h2>
+                            <p key={index + 1}>{m.moviePrice} Euro</p>
+                        </MovieWrap>
+                    </>
                 )
-        })}
-       
-        <p>Please fill the movie and the price.</p>
+            })}
 
-            <input name="movieName"
-                type="text"
-                placeholder="Type the movie name"
-                onChange={changeHandlerMovie}
-            ></input>
-            <input name="moviePrice"
-                type="text"
-                placeholder="Type the movie price"
-                onChange={changeHandlerMovie}
-            ></input>
-            <button type="submit" onClick={submit}>Submit</button>
+            <p>Please fill the movie and the price.</p>
+            <InputWrap>
+                <Input name="movieName"
+                    type="text"
+                    placeholder="Type the movie name"
+                    value={movie.movieName}
+                    onChange={changeHandlerMovie}
+                ></Input>
+                <Input name="moviePrice"
+                    type="text"
+                    placeholder="Type the movie price"
+                    value={movie.moviePrice}
+                    onChange={changeHandlerMovie}
+                ></Input>
+            </InputWrap>
+            <ButtonSubmit type="submit" onClick={submit}>Submit</ButtonSubmit>
+            <ButtonClear type="submit" onClick={handleClear}>Clear Movies</ButtonClear>
+
         </div>
     )
 }
