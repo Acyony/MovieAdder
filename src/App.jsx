@@ -28,7 +28,6 @@ function App() {
       <Container>
         <MyProviderContext>
         <H1>Welcome to the Kino Stars!</H1>
-        <p>Please fill the movie and the price.</p>
 
           <MovieWrap>
             <MovieAdder></MovieAdder>

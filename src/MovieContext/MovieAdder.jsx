@@ -26,6 +26,7 @@ export default function MovieAdder() {
                 )
         })}
        
+        <p>Please fill the movie and the price.</p>
 
             <input name="movieName"
                 type="text"
