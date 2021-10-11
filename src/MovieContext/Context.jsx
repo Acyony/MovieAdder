@@ -11,6 +11,7 @@ export default function MyProviderContext({ children }) {
     { movieName: "Harry Potter2", moviePrice: "10" },
   ];
   const [movies, setMovies] = useState(initialState);
+  const [errorMessage, setErrorMessage] = useState({ value: "" });
 
   // -----=^.^-=----- To set one Movie to movies
   const [movie, setMovie] = useState({ movieName: "", moviePrice: "" });
@@ -25,15 +26,20 @@ export default function MyProviderContext({ children }) {
   function submit(e) {
     e.preventDefault();
     if (movie.movieName === "" || movie.moviePrice === "") {
-      alert("Empty field. Please check it again!");
+      setErrorMessage((prevState) => ({
+        value: "Empty field. Please check it again!",
+      }));
     } else {
       setMovies([...movies, movie]);
     }
   }
 
   return (
-    <myContext.Provider value={{ movies, changeHandlerMovie, submit }}>
-      {children}
-    </myContext.Provider>
+    <>
+      <myContext.Provider value={{ movies, changeHandlerMovie, submit }}>
+        {children}
+        <p style={{ color: "red" }}>{errorMessage.value}</p>
+      </myContext.Provider>
+    </>
   );
 }
