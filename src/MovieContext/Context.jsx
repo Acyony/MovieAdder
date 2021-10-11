@@ -53,7 +53,6 @@ export default function MyProviderContext({ children }) {
         setMovies([...movies, movie]);
         localStorage.setItem("movies", JSON.stringify([...movies, movie]));
         //  -----=^.^-=----- reset the form
-        //e.target.reset();
         setMovie({ movieName: "", moviePrice: "" })
     }
 
