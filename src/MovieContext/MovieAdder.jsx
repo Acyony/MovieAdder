@@ -32,7 +32,7 @@ padding: 0.5rem;
 `
 
 export default function MovieAdder() {
-    const { movies, movie, changeHandlerMovie, submit, handleClear } = useContext(myContext)
+    const { movies, movie, changeHandlerMovie, submit, handleClear, clearInputOnFocus } = useContext(myContext)
 
     return (
         <div>
@@ -54,12 +54,15 @@ export default function MovieAdder() {
                     placeholder="Type the movie name"
                     value={movie.movieName}
                     onChange={changeHandlerMovie}
+                    onFocus = {clearInputOnFocus} 
                 ></Input>
                 <Input name="moviePrice"
                     type="text"
                     placeholder="Type the movie price"
                     value={movie.moviePrice}
                     onChange={changeHandlerMovie}
+                    onFocus = {clearInputOnFocus} 
+
                 ></Input>
             </InputWrap>
             <ButtonSubmit type="submit" onClick={submit}>Submit</ButtonSubmit>

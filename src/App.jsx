@@ -1,11 +1,14 @@
 import './App.css';
-// import MyProvider from './CountContext/Context.jsx';
-// import Counter from './CountContext/Counter.jsx';
+// ----=^.^=----- Movie exercise
+import MyProvider from './CountContext/Context.jsx';
+import Counter from './CountContext/Counter.jsx';
 
 import MyProviderContext from './MovieContext/Context.jsx';
 import MovieAdder from "./MovieContext/MovieAdder.jsx"
 import styled from 'styled-components';
 
+// import MyProvider from "./CountReducer/ReducerContext.jsx";
+// import Count from "./CountReducer/Count.jsx"
 
 const Container = styled.div`
 margin: 4rem 8rem;
@@ -25,7 +28,7 @@ function App() {
         <Counter/>
       </MyProvider> */}
 
-      <Container>
+     <Container>
         <MyProviderContext>
         <H1>Welcome to the Kino Stars!</H1>
 
@@ -33,7 +36,12 @@ function App() {
             <MovieAdder></MovieAdder>
           </MovieWrap>
         </MyProviderContext>
-      </Container>
+      </Container> 
+
+
+    {/*   <MyProvider >
+      <Count />
+    </MyProvider> */}
     </>
   );
 }
